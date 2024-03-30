@@ -8,9 +8,13 @@ import { SearchResults } from "../components";
 const ImageSearch = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [pageNum, setPageNum] = useState<number>(1);
-    const [color, setColor] = useState<string | null>(null);
-    const [orientation, setOrientation] = useState<Orientation>(null);
-    const { isLoading, isError, results, hasNextPage } = useImagesSearch(
+    const [color
+        // , setColor
+    ] = useState<string | null>(null);
+    const [orientation
+        // , setOrientation
+    ] = useState<Orientation>(null);
+    const { isLoading, isError, results } = useImagesSearch(
         pageNum,
         searchTerm,
         color,

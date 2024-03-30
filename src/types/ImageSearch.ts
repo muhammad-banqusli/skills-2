@@ -1,5 +1,5 @@
 export type Orientation = "landscape" | "portrait" | "square" | null;
-type LocalCode =
+export type LocalCode =
     | "en-US"
     | "pt-BR"
     | "es-ES"
