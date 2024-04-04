@@ -25,6 +25,8 @@ const PaginationImage = ({ image }: PropTypes) => {
                     src={image.src.tiny}
                     alt={image.alt}
                     title={image.alt}
+                    width={image.width}
+                    height={image.height}
                     className="sm:hover:rounded-md"
                     loading="lazy"
                 />

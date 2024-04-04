@@ -5,49 +5,56 @@ import { Orientation } from "../types/ImageSearch";
 
 const useImagesSearch = (
     pageNum: number = 1,
-    query: string ,
+    query: string,
     color: string | null,
-    orientation: Orientation
+    orientation: Orientation,
+    
 ) => {
     const [results, setResults] = useState<ImagesResponse | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [error, setError] = useState({});
     const [hasNextPage, setHasNextPage] = useState(false);
-    const debouncedQuery = useDebounce(query)
-    
-    useEffect(() => {
-        setIsLoading(true);
-        setIsError(false);
-        setError({});
+    const debouncedQuery = useDebounce(query);
 
+    useEffect(() => {
         const controller = new AbortController();
         const { signal } = controller;
 
-        const fetchUrl = `https://api.pexels.com/v1/search?${
-            debouncedQuery ? "query=" + debouncedQuery : ""
-        }${orientation? "&orientation="+orientation:""}&page=${pageNum}&per_page=40`;
+        if (!!query.length || !!color) {
+            setIsLoading(true);
+            setIsError(false);
+            setError({});
 
-        fetch(fetchUrl, {
-            headers: {
-                Authorization:
-                    "Pz6CLNIDRA8EdrRp0s1Q4NEuNADFne7qLuRq8SuKuO3ECNaYusgoCeSl",
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setResults(data);
-                const { page, per_page, total_results } = data;
-                const nextPageDisabled = total_results / per_page === page;
-                nextPageDisabled ? setHasNextPage(false) : setHasNextPage(true);
-                setIsLoading(false);
+            const fetchUrl = `https://api.pexels.com/v1/search?${
+                debouncedQuery ? "query=" + debouncedQuery : ""
+            }${orientation ? "&orientation=" + orientation : ""}${
+                color ? "&color=" + color : ""
+            }&page=${pageNum}&per_page=40`;
+
+            fetch(fetchUrl, {
+                headers: {
+                    Authorization:
+                        "Pz6CLNIDRA8EdrRp0s1Q4NEuNADFne7qLuRq8SuKuO3ECNaYusgoCeSl",
+                },
             })
-            .catch((e: Error) => {
-                setIsLoading(false);
-                if (signal.aborted) return;
-                setIsError(true);
-                setError({ message: e.message });
-            });
+                .then((res) => res.json())
+                .then((data) => {
+                    setResults(data);
+                    const { page, per_page, total_results } = data;
+                    const nextPageDisabled = total_results / per_page === page;
+                    nextPageDisabled
+                        ? setHasNextPage(false)
+                        : setHasNextPage(true);
+                    setIsLoading(false);
+                })
+                .catch((e: Error) => {
+                    setIsLoading(false);
+                    if (signal.aborted) return;
+                    setIsError(true);
+                    setError({ message: e.message });
+                });
+        }
         return () => controller.abort();
     }, [pageNum, debouncedQuery, color, orientation]);
 

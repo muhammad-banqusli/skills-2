@@ -1,5 +1,5 @@
-import { Header, Hero, Footer, SlideUpBtn } from "./components";
-import { AccordionPage, ColorPicker, SliderAndRating, ImageSearch } from "./pages";
+import { Header, Footer, SlideUpBtn } from "./components";
+import { Hero, AccordionPage, ColorPicker, SliderAndRating, ImageSearch } from "./pages";
 
 function App() {
     return (
