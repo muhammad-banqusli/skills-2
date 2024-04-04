@@ -44,7 +44,7 @@ const SlideUpBtn = () => {
                 className="rounded-full m-0 p-[2px]"
             >
                 <div className=" bg-whitesmoke rounded-full p-2">
-                    <img className="h-4 w-4" src={arrow} alt="slid up" />
+                    <img className="h-4 w-4" src={arrow} alt="slide up" />
                 </div>
             </button>
         </div>
