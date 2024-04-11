@@ -1,5 +1,5 @@
 import { useState } from "react";
-import accordionData from "./accordionData";
+import {accordionData} from "./accordionData";
 import arrowUp from "../../assets/up-arrow-svgrepo-com.svg";
 
 const Accordion = () => {

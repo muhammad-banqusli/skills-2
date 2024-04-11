@@ -43,7 +43,7 @@ const Content3 = (
     </div>
 );
 
-const accordionData: AccordionItem[] = [
+export const accordionData: AccordionItem[] = [
     {
         id: 1,
         title: "Technologies I learnt and worked with",
@@ -60,5 +60,3 @@ const accordionData: AccordionItem[] = [
         content: Content3,
     },
 ];
-
-export default accordionData;
