@@ -32,6 +32,7 @@ const FilterModal = forwardRef<ModalRef, PropTypes>(
         const [colorMethod, setColorMethod] = useState<"choose" | "enter">(
             "choose"
         );
+
         if (open) document.body.style.overflow = "hidden";
         else document.body.style.overflow = "auto";
 

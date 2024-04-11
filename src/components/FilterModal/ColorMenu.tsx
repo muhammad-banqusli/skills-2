@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import useClickOutside from "../../hooks/useClickOutside";
 import upArrow from "../../assets/up-arrow-svgrepo-com.svg";
 
 type PropTypes = {
@@ -9,7 +10,8 @@ type PropTypes = {
 
 const ColorMenu = ({ chosenColor, setChosenColor, disabled }: PropTypes) => {
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
-
+    const ref = useRef(null);
+    useClickOutside(ref, () => setMenuOpen(false));
     const toggleMenu = () => setMenuOpen((prev) => !prev);
     const colorsArray = [
         { color: "green", code: "#008000" },
@@ -24,7 +26,7 @@ const ColorMenu = ({ chosenColor, setChosenColor, disabled }: PropTypes) => {
     ];
 
     return (
-        <div className="relative  rounded-md self-center">
+        <div className="relative  rounded-md self-center" ref={ref}>
             <button
                 className="border-2 px-2 py-1.5 rounded-md text-sm flex items-center gap-3 disabled:opacity-70 shadow-md"
                 onClick={toggleMenu}
@@ -50,7 +52,9 @@ const ColorMenu = ({ chosenColor, setChosenColor, disabled }: PropTypes) => {
                 }`}
             >
                 <ul
-                    className={`absolute top-10 right-0 rounded-md bg-whitesmoke grid grid-cols-4 md:flex flex-1 md:flex-col border-2 drop-shadow-lg animate-fadeIn z-10 transition-all duration-300 ${menuOpen? "scale-100 opacity-100":"scale-0 opacity-0"}`}
+                    className={`absolute top-10 right-0 rounded-md bg-whitesmoke grid grid-cols-4 md:flex flex-1 md:flex-col border-2 drop-shadow-lg animate-fadeIn z-10 transition-all duration-300 ${
+                        menuOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
+                    }`}
                 >
                     {colorsArray
                         .sort((a, b) => a.color.localeCompare(b.color))
