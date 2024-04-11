@@ -1,10 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { Orientation, LocaleCode } from "../types/ImageSearch";
+import { Orientation } from "../types/ImageSearch";
 import useImagesSearch from "../hooks/useImagesSearch";
 import useDebounce from "../hooks/useDebounce";
-import Loading from "../components/Loading";
-import FilterModal from "../components/FilterModal";
-import { SearchResults } from "../components";
+import { Loading, FilterModal, SearchResults, Section } from "../components";
 
 const ImageSearch = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
@@ -33,13 +31,11 @@ const ImageSearch = () => {
     };
 
     return (
-        <section className="section-min-height p-2 md:p-8 flex flex-col items-center gap-8 pt-8 w-full">
-            <h2 className="text-xl font-titles">
-                Image Search with debounced value and search filter
-            </h2>
-            <p className="text-center text-sm md:text-lg mb-3">
-                Debounced value aims to minimize the count of http requests
-            </p>
+        <Section
+            id="image-search"
+            title="Image Search with debounced value and search filter"
+            paragraph="Debounced value aims to minimize the count of http requests"
+        >
             <div className="flex gap-3 w-full justify-center">
                 <input
                     type="text"
@@ -55,11 +51,11 @@ const ImageSearch = () => {
                     Filters
                 </button>
             </div>
-           
+
             {!isLoading && !isError && results?.photos && (
                 <SearchResults results={results} setPage={setPageNum} />
             )}
-             <div className="h-full grow grid place-content-center">
+            <div className="h-full grow grid place-content-center">
                 {isLoading && searchTerm && <Loading />}
             </div>
 
@@ -70,7 +66,7 @@ const ImageSearch = () => {
                 orientaion={orientation}
                 setOrientation={setOrientation}
             />
-        </section>
+        </Section>
     );
 };
 export default ImageSearch;

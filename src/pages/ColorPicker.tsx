@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Section } from "../components";
 import searchIcon from "../assets/icons8-search-128.svg";
 import closeIcon from "../assets/x-symbol-svgrepo-com.svg";
 import dropImageIcon from "../assets/icons8-drag-and-drop-64.png";
@@ -71,12 +72,12 @@ const ColorPicker = () => {
     };
 
     return (
-        <section className="section-min-height p-2 md:p-8 flex flex-col items-center gap-8 pt-8 w-full">
-            <h2 className="text-xl font-titles">Image Drop & Color Picker</h2>
-            <p className="text-center text-sm md:text-lg mb-3">
-                Generate a random color or select an image and pick a color from
-                it
-            </p>
+        <Section
+            id="color-picker"
+            title="Image Drop & Color Picker"
+            paragraph=" Generate a random color or select an image and pick a color from
+                it"
+        >
             <input
                 key={image ? "hasImage" : "noImage"}
                 className="hidden"
@@ -182,8 +183,11 @@ const ColorPicker = () => {
                     </i>
                 </button>
             </div>
-            <p className="text-xs md:text-sm"><span className="text-red-600 ">Note: </span>color picker might not work on all browsers</p>
-        </section>
+            <p className="text-xs md:text-sm">
+                <span className="text-red-600 ">Note: </span>color picker might
+                not work on all browsers
+            </p>
+        </Section>
     );
 };
 export default ColorPicker;

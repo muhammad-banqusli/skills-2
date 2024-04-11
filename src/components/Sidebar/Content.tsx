@@ -5,31 +5,27 @@ const list = [
         type: "internal",
     },
     {
-        title: "Search Filter & Skeleton",
-        desination: "#search-filter",
+        title: "Accordion",
+        desination: "#accordion",
         type: "internal",
     },
 
     {
-        title: "Pagination & Modal",
-        desination: "#pagination",
+        title: "Image Drop & Color Picker",
+        desination: "#color-picker",
         type: "internal",
     },
     {
-        title: "Drag & Drop",
-        desination: "#drag-and-drop",
+        title: "Image Slider & Star Rating",
+        desination: "#slider-and-rating",
         type: "internal",
     },
     {
-        title: "Kanban",
-        desination: "#kanban",
+        title: "Image Search",
+        desination: "#image-search",
         type: "internal",
     },
-    {
-        title: "Infinite Loading",
-        desination: "#infinite",
-        type: "internal",
-    },
+    
     {
         title: "My Other Websites",
         desination: "https://skills-2.vercel.app/",

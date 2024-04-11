@@ -1,8 +1,5 @@
-import ImageSlider from "../components/ImageSlider";
-import Loading from "../components/Loading";
-import StarRating from "../components/StarRating";
+import { Loading, Section, ImageSlider, StarRating } from "../components";
 import useFetch from "../hooks/useFetch";
-
 
 const SliderAndRating = () => {
     const { results, isLoading, isError } = useFetch(
@@ -23,18 +20,19 @@ const SliderAndRating = () => {
                 Something went wrong while fetching data
             </p>
         );
-    else if (results) sliderContent = <ImageSlider results={results} duration={2.5}/>
+    else if (results)
+        sliderContent = <ImageSlider results={results} duration={2.5} />;
     return (
-        <section className="section-min-height p-2 md:p-8 flex flex-col items-center gap-8 pt-8 w-full">
-            <h2 className="text-xl font-titles">Image Slider & Star Rating</h2>
-            <p className="text-center text-sm md:text-lg mb-3">
-                Two simple components made with no third party components
-            </p>
+        <Section
+            id="slider-and-rating"
+            title="Image Slider & Star Rating"
+            paragraph="Two simple components made with no third party components"
+        >
             <div className="h-full grid place-content-center">
                 {sliderContent}
             </div>
             <StarRating />
-        </section>
+        </Section>
     );
 };
 export default SliderAndRating;

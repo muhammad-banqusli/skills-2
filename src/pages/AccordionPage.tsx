@@ -1,12 +1,11 @@
-import Accordion from "../components/accordion/Accordion";
+import { Accordion, Section } from "../components";
 
 const AccordionPage = () => {
     return (
-        <section className="section-min-height p-2 md:p-8 flex flex-col items-center gap-8 pt-8 w-full">
-            <h2 className="text-xl font-titles">Accordion</h2>
+        <Section id="accordion" title="Accordion" paragraph="">
             <Accordion />
-        </section>
+        </Section>
     );
 };
 
-export default AccordionPage
+export default AccordionPage;
