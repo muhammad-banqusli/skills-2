@@ -4,7 +4,7 @@ import upArrow from "../../assets/up-arrow-svgrepo-com.svg";
 type PropTypes = {
     chosenColor: { color: string; code: string } | null;
     setChosenColor: React.Dispatch<any>;
-    disabled: boolean
+    disabled: boolean;
 };
 
 const ColorMenu = ({ chosenColor, setChosenColor, disabled }: PropTypes) => {
@@ -44,34 +44,39 @@ const ColorMenu = ({ chosenColor, setChosenColor, disabled }: PropTypes) => {
                     } transition-all duration-300`}
                 />
             </button>
-            <div className={`${menuOpen ? "flex " : "hidden invisible"}`}>
+            <div
+                className={`transition-all duration-300${
+                    menuOpen ? "flex " : "hidden invisible"
+                }`}
+            >
                 <ul
-                    className={`absolute top-10 right-0 rounded-md bg-whitesmoke grid grid-cols-4 md:flex flex-1 md:flex-col border-2 drop-shadow-lg animate-fadeIn z-10`}
+                    className={`absolute top-10 right-0 rounded-md bg-whitesmoke grid grid-cols-4 md:flex flex-1 md:flex-col border-2 drop-shadow-lg animate-fadeIn z-10 transition-all duration-300 ${menuOpen? "scale-100 opacity-100":"scale-0 opacity-0"}`}
                 >
-                    {colorsArray.sort((a,b) => a.color.localeCompare(b.color)).map((color, i) => (
-                        <li
-                            className="border-b  last:border-none text-sm hover:bg-gray-200"
-                            key={i}
-                        >
-                            <button
-                                onClick={() => {
-                                    setChosenColor(color);
-                                    setMenuOpen(false);
-                                }}
-                                className="w-full text-left px-[6.1px] md:px-3 py-1 md:py-1.5 flex gap-3 items-center justify-between"
-                                title={color?.color}
+                    {colorsArray
+                        .sort((a, b) => a.color.localeCompare(b.color))
+                        .map((color, i) => (
+                            <li
+                                className="border-b  last:border-none text-sm hover:bg-gray-200"
+                                key={i}
                             >
-                                <span className="capitalize hidden md:block">
-                                    {color?.color}
-                                </span>
-                                <div
-                                    className="inline w-4 h-4 border border-gray-300 shadow-md"
-                                    
-                                    style={{ backgroundColor: color.code }}
-                                ></div>
-                            </button>
-                        </li>
-                    ))}
+                                <button
+                                    onClick={() => {
+                                        setChosenColor(color);
+                                        setMenuOpen(false);
+                                    }}
+                                    className="w-full text-left px-[6.1px] md:px-3 py-1 md:py-1.5 flex gap-3 items-center justify-between"
+                                    title={color?.color}
+                                >
+                                    <span className="capitalize hidden md:block">
+                                        {color?.color}
+                                    </span>
+                                    <div
+                                        className="inline w-4 h-4 border border-gray-300 shadow-md"
+                                        style={{ backgroundColor: color.code }}
+                                    ></div>
+                                </button>
+                            </li>
+                        ))}
                 </ul>
             </div>
         </div>
