@@ -50,12 +50,7 @@ const Hero = () => {
                                 className="h-10"
                                 title="Tailwind"
                             />
-                            <img
-                                src={dndLogo}
-                                alt="dnd kit"
-                                className="h-10"
-                                title="dnd kit"
-                            />
+                           
                         </div>
                     </div>
                     <p className="text-center md:text-left">
