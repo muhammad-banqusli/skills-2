@@ -2,7 +2,6 @@ import image from "../assets/image.jpeg";
 import reactLogo from "../assets/react.svg";
 import tsLogo from "../assets/typescript-official-svgrepo-com.svg";
 import tailwindLogo from "../assets/tailwind-svgrepo-com.svg";
-import dndLogo from "../assets/dnd-kit-logo.svg"
 
 const Hero = () => {
     return (
