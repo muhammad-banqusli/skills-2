@@ -10,7 +10,7 @@ type PropTypes = {
 const Section = ({ children, title, paragraph, id }: PropTypes) => {
     return (
         <section
-            className="section-min-height text-center flex flex-col items-center gap-5 pt-10 scroll-m-8"
+            className="section-min-height text-center flex flex-col items-center gap-5 pt-10 scroll-m-8 px-5 md:px-20"
             id={id}
         >
             <h2 className="text-xl font-titles">{title}</h2>

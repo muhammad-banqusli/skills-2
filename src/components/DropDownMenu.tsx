@@ -16,7 +16,7 @@ const DropDownMenu = () => {
             title: "Accordion",
             desination: "#accordion",
         },
-    
+
         {
             title: "Image Drop & Color Picker",
             desination: "#color-picker",
@@ -29,7 +29,6 @@ const DropDownMenu = () => {
             title: "Image Search",
             desination: "#image-search",
         },
-        
     ];
 
     return (
